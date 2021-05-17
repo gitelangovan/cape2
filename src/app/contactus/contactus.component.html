@@ -1,0 +1,85 @@
+<section class="contact-bg">
+  <div class="container">
+      <div class="row">
+
+          <div class="col-md-8">
+
+              <h5 class="sl-title" style="margin-left:15px  !important;">Contact Us</h5>
+          </div>
+      </div>
+    </div>
+</section><br><br>
+<section>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-8">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7361.346256516123!2d79.93451296530968!3d12.848340934471153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6fe99fcad20123f9!2sCape%20Electric%20Private%20Limited!5e1!3m2!1sen!2sin!4v1621052352234!5m2!1sen!2sin" width="720" height="600" style="border:1;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+
+<!--Form Vslidation-->
+
+<div class="col-md-4">
+
+    <form id="contact" action="" method="post" (submit)="doEnquiry(f)" #f=ngForm>
+      <h3>Contact Us For Enquiry</h3>
+      <h4 class="alert alert-success text-center">{{msg}}</h4>
+        <div>
+          <div class="form-group" [ngClass]="{'has-error': username.invalid && username.touched}" submi> <!--> -->
+            <label for="exampleInputName">Name</label>
+            <input type="text" style="font-size: small;" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name"
+              name="uname" [ngModel] #username="ngModel" required minlength="4"> <br>
+
+                  <p class="alert alert-danger"
+                  *ngIf="username.errors?.required && (username.touched || username.dirty)">
+                    Enter Your Name...!
+                  </p>
+                  <p class="alert alert-danger"
+                  *ngIf="username.errors?.minlength && username.touched">
+                    Enter Atleast Four Charectors...!
+                  </p>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" style="font-size: small;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+              name="uemail" [ngModel] required email #usermail="ngModel"><br>
+
+                  <p class="alert alert-danger"
+                  *ngIf="usermail.invalid && usermail.touched">
+                    Please Enter Valid Email-Id...!
+                  </p>
+            </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Phone">Phone Number</label>
+        <input type="tel" id="phone" name="uphone" formcontr class="form-control" placeholder="Phone number" [ngModel] required maxlength="10" #userphone="ngModel"> <br>
+
+                <P class="alert alert-danger"
+                *ngIf="userphone.touched && userphone.invalid">
+                Enter Numbers...!
+                </P>
+                <p class="alert alert-danger" *ngIf="userphone.maxlength && userphone.invalid"> Enter 10 Digit Number</p>
+      </div>
+
+      <div>
+          <div class="form-group">
+            <label for="exampleSelect1">Select Country</label>
+            <select class="form-control" style="font-size: small;" id="exampleSelect1" name="ucountry" [ngModel] required #country="ngModel">
+              <option value="ind">India</option>
+              <option value="aus">Australia</option>
+              <option value="sri">Sri lanka</option>
+              <option value="us">United States</option>
+            </select>
+          </div><br>
+      </div>
+      <div>
+        <div class="form-group">
+            <label for="exampleTextarea">Message</label>
+            <textarea class="form-control" style="font-size: small;" id="exampleTextarea" rows="3" name="umessage" placeholder="Type your messages here" [ngModel] minlength="10" #add="ngModel" required minlength="10"></textarea><br>
+
+    </div>
+  </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Send Message</button>&nbsp;
+</form>
+
